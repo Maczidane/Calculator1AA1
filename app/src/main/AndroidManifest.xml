@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.calculator">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MemoryActivity"></activity>
+        <activity android:name=".VolumeActivity" />
+        <activity android:name=".AngleActivity" />
+        <activity android:name=".AreaActivity" />
+        <activity android:name=".WeightActivity" />
+        <activity android:name=".LenghtActivity" />
+        <activity android:name=".TimeActivity" />
+        <activity android:name=".TemperatureActivity" />
+        <activity
+            android:name=".LogicCalculatorActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".UnitCalculatorActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".BasicCalculatorActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".BasicCalculator2Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".StartActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AgeCalculatorActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".CombinationsActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".FactorialActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".LogCalculatorActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ValDisActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PermutationsActivity"
+            android:theme="@style/AppTheme" />
+    </application>
+
+</manifest>
