@@ -45,6 +45,8 @@ public class BasicCalculator2Activity extends AppCompatActivity {
         calculation = findViewById(R.id.calculator);
         //set movement to the text view
         calculation.setMovementMethod(new ScrollingMovementMethod());
+
+
         //initialize answer
         answer = findViewById(R.id.answer);
         toolbar = findViewById(R.id.toolbar_age);
@@ -84,7 +86,7 @@ public class BasicCalculator2Activity extends AppCompatActivity {
             }
         });
 
-        toolbar.setTitle("Basic Calculator");
+        toolbar.setTitle("Scientific Calculator");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
 
 
@@ -244,7 +246,7 @@ public class BasicCalculator2Activity extends AppCompatActivity {
                     sCalculation = sCalculation.substring(0, sCalculation.length() - 3);
                 }
             }
-            sCalculation = sCalculation + "\n" + ob.getText() + " ";
+            sCalculation = sCalculation + "\t" + ob.getText() + " ";
             number_one = "";
             Result = temp;
             current_oprator = ob.getText().toString();

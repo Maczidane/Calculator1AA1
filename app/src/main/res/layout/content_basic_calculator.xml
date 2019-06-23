@@ -14,8 +14,12 @@
         android:gravity="bottom|end"
         android:hint=" 0"
         android:padding="10dp"
+
+        android:scrollHorizontally="true"
         android:scrollbars="horizontal"
-        android:textSize="30sp" />
+
+
+        android:textSize="30sp" />0
 
     <TextView
         android:id="@+id/answer"

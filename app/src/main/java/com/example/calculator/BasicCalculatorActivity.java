@@ -209,7 +209,7 @@ public class BasicCalculatorActivity extends AppCompatActivity {
 
             }
 
-            sCalculator = sCalculator + "\n" + ob.getText() + " ";
+            sCalculator = sCalculator + "\t" + ob.getText() + " ";
             number_one = "";
             Result = temp;
             current_operator = ob.getText().toString();
