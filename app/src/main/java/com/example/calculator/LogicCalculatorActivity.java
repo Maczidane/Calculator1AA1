@@ -14,13 +14,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import static com.example.calculator.AgeCalculatorActivity.hideKeyboard;
 
-public class LogicCalculatorActivity extends AppCompatActivity {
+public class LogicCalculatorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private Toolbar toolbar;
 
@@ -34,15 +35,33 @@ public class LogicCalculatorActivity extends AppCompatActivity {
 
     private Button buttonSolve;
 
+    /* renamed from: a */
+    private Button f22a;
+    /* renamed from: b */
+    private Button f23b;
+    /* renamed from: c */
+    private Button f24c;
+    /* renamed from: d */
+    private Button f25d;
+    private ImageButton delete;
+    private Button dot;
+    int dotcheck;
+    /* renamed from: e */
+    private Button f26e;
+    private Button eight;
+    /* renamed from: f */
+    private Button f27f;
+    private Button five;
+    private Button four;
+    private int fractionsLength;
+    private EditText input;
+    private int inputbase;
 
-    private static final String[] paths = {"From", "DEC", "HEX", "BIN", "OCT",};
-    private static final String[] path = {"From", "DEC", "HEX", "BIN", "OCT",};
 
-    private Spinner spinnerTo;
 
-    private EditText editTextValue;
 
-    float another;
+
+
 
 
     @Override
@@ -62,16 +81,6 @@ public class LogicCalculatorActivity extends AppCompatActivity {
 
         buttonSolve = findViewById(R.id.btn_solve);
 
-        editTextValue = findViewById(R.id.edit_value);
-        textViewResult = findViewById(R.id.TitleAnswer);
-
-        spinnerTo = findViewById(R.id.simpleSpinnerTo);
-
-        ArrayAdapter<String> to = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, paths);
-        to.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
-        spinnerTo.setAdapter(to);
 
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -82,43 +91,8 @@ public class LogicCalculatorActivity extends AppCompatActivity {
             }
         });
 
-        spinnerFrom = findViewById(R.id.simpleSpinnerFrom);
-
         toolbar.setTitle("Base Calculator");
-
-        ArrayAdapter<String> from = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, paths);
-        from.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
-        //Setting the ArrayAdapter data on the Spinner
-
-        spinnerFrom.setAdapter(from);
-
-
-        spinnerFrom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-
-        buttonClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                editTextValue.setText("");
-                textViewResult.setText("0.0");
-
-
-            }
-        });
-
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
@@ -193,186 +167,6 @@ public class LogicCalculatorActivity extends AppCompatActivity {
         });
 
 
-        buttonSolve.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String temp1 = spinnerFrom.getSelectedItem().toString();
-                String temp2 = spinnerTo.getSelectedItem().toString();
-                String value = editTextValue.getText().toString();
-
-
-
-
-                if (temp1.equals("From") || temp2.equals("To")) {
-
-                    Toast.makeText(getApplicationContext(), "Please choose a From and To", Toast.LENGTH_LONG).show();
-
-                } else if (value.equals("")) {
-                    editTextValue.setText("");
-                    editTextValue.setError("Please enter a value to convert");
-                    editTextValue.setFocusable(true);
-                }
-
-
-                else {
-
-                    if (temp1.equals("DEC")) {
-                        if (!value.contains("."))
-                        {
-                            value = value +".0";
-                            another = Float.valueOf(value);
-
-
-                        }
-
-
-                        if (temp2.equals("HEX")) {
-
-                            Double d = Double.parseDouble(value);
-
-                            long lng = Double.doubleToLongBits(d);
-
-                            String t = Float.toHexString(another);
-
-                            //long y = Integer.parseInt(value,16);
-                            textViewResult.setText(t);
-
-                        } else if (temp2.equals("BIN")) {
-
-
-
-
-                            int y = Float.floatToIntBits(another);
-                            textViewResult.setText(String.valueOf(y));
-
-                        } else if (temp2.equals("OCT")) {
-
-                            int x = Float.floatToIntBits(another);
-
-                            String y = Integer.toOctalString(x);
-                            textViewResult.setText(y);
-
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Cannot convert from DEC to DEC", Toast.LENGTH_SHORT).show();
-                            textViewResult.setText("");
-                        }
-
-
-                    }
-                    else if (temp1.equals("HEX")) {
-
-                        if (TestHex(value))
-                        {
-                            if (temp2.equals("DEC")) {
-
-                                textViewResult.setText(Integer.parseInt(value, 16));
-
-                            } else if (temp2.equals("BIN")) {
-
-
-                                String y = Integer.toHexString(Integer.parseInt(value));
-                                textViewResult.setText(y);
-
-                            } else if (temp2.equals("OCT")) {
-
-
-                                String y = Integer.toOctalString(Integer.parseInt(value));
-                                textViewResult.setText(y);
-
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Cannot convert from HEX to HEX", Toast.LENGTH_SHORT).show();
-                                textViewResult.setText("");
-                            }
-                        }
-                        else{
-
-                            Toast.makeText(getApplicationContext(),"The value entered is no a valid HEX number .Please change value entered",Toast.LENGTH_SHORT).show();
-                        }
-
-
-
-
-                    }
-                    else if (temp1.equals("BIN")) {
-
-                        if (value.matches("[01]+") && !value.startsWith("0")) {
-
-                            if (temp2.equals("HEX")) {
-
-
-                                int y = Integer.parseInt(value, 16);
-                                textViewResult.setText(String.valueOf(y));
-
-                            } else if (temp2.equals("DEC")) {
-
-
-                                int y = Integer.parseInt(value, 2);
-                                textViewResult.setText(String.valueOf(y));
-
-                            } else if (temp2.equals("OCT")) {
-
-
-                                int bnum = Integer.parseInt(value, 2);
-                                String ostr = Integer.toOctalString(bnum);
-                                textViewResult.setText(ostr);
-
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Cannot convert from BIN to BIN", Toast.LENGTH_SHORT).show();
-                                textViewResult.setText("");
-                            }
-
-                        }else{
-                            Toast.makeText(getApplicationContext(),"The value entered is no a  valid BIN number .Please change value entered",Toast.LENGTH_SHORT).show();
-
-                        }
-
-
-                    }
-                    else if (temp1.equals("OCT")) {
-
-                        try {
-
-                            if (temp2.equals("HEX")) {
-
-
-                                String hex_num;
-                                int decnum;
-
-                                decnum = Integer.parseInt(value, 8);
-                                hex_num = Integer.toHexString(decnum);
-
-
-                                textViewResult.setText(hex_num);
-
-                            } else if (temp2.equals("DEC")) {
-
-
-                                int decimal = Integer.parseInt(value, 8);
-                                textViewResult.setText(String.valueOf(decimal));
-
-                            } else if (temp2.equals("BIN")) {
-
-                                int i = Integer.parseInt(value, 8);
-                                String binary = Integer.toBinaryString(i);
-                                textViewResult.setText(binary);
-
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Cannot convert from OCT to OCT", Toast.LENGTH_SHORT).show();
-                                textViewResult.setText("");
-                            }
-
-                        }catch (NumberFormatException e)
-                        {
-                            Toast.makeText(getApplicationContext(),"The value entered is no a  valid OCT number .Please change value entered",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-
-                }
-
-            }
-
-        });
 
 
     }
@@ -389,6 +183,15 @@ public class LogicCalculatorActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
 }
 
 

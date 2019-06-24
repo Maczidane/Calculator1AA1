@@ -1111,6 +1111,8 @@ id btn_modulo
 id btn_multiplication
 id btn_nine
 id btn_one
+id btn_parenthasic_right
+id btn_parenthasis_left
 id btn_pi
 id btn_plus
 id btn_plus_or_minus

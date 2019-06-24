@@ -708,7 +708,7 @@ public class BasicCalculator2Activity extends AppCompatActivity {
                     if (sCalculation.equals("")) {
                         switch (function) {
                             case "sin_inv":
-                                sCalculation += sin_inv + "( ";
+                                sCalculation += sin_inv + "( " ;
                                 break;
                             case "cos_inv":
                                 sCalculation += cos_inv + "( ";
@@ -1522,6 +1522,29 @@ public class BasicCalculator2Activity extends AppCompatActivity {
             }
             updateCalculation();
         }
+    }
+
+    public void onParentLeftClick(View view) {
+
+        if (!sCalculation.endsWith("("))
+        {
+            sCalculation = sCalculation + "(";
+            updateCalculation();
+
+
+        }
+
+    }
+
+    public void onParentRightClick(View view) {
+        if (!sCalculation.endsWith(")") )
+        {
+            sCalculation = sCalculation + ")";
+            updateCalculation();
+
+
+        }
+
     }
 }
 

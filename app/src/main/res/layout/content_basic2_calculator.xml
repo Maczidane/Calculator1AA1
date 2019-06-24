@@ -92,6 +92,34 @@
 
 
                     />
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btn_parenthasis_left"
+                    android:layout_width="0dp"
+                    android:background="@color/horizontal_btn_color"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:text="@string/parentheses_open"
+                    android:onClick="onParentLeftClick"
+                    android:layout_margin="@dimen/buttonMargin"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSize"
+
+
+                    />
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btn_parenthasic_right"
+                    android:layout_width="0dp"
+                    android:background="@color/horizontal_btn_color"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:text="@string/parentheses_close"
+                    android:onClick="onParentRightClick"
+                    android:layout_margin="@dimen/buttonMargin"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSize"
+
+
+                    />
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btn_square"
